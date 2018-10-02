@@ -1,43 +1,25 @@
 package com.tracker.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Basic Controller which is called for unhandled errors
  */
-@Controller
+@RestController
 public class AppErrorController implements ErrorController{
 
-    /**
-     * Error Attributes in the Application
-     */
 
-    private final static String ERROR_PATH = "/error";
+    private static final String PATH = "/error";
 
-
-    /**
-     * Supports other formats like JSON, XML
-     * @param request
-     * @return
-     */
-    @RequestMapping(value = ERROR_PATH)
-    @ResponseBody
+    @RequestMapping(value = PATH)
     public String error() {
-        return "Error Handeling";
+        return "Error handling";
     }
 
-    /**
-     * Returns the path of the error page.
-     *
-     * @return the error path
-     */
     @Override
     public String getErrorPath() {
-        return ERROR_PATH;
+        return PATH;
     }
-
-
 }
